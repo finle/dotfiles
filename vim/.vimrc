@@ -43,6 +43,7 @@ Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'junegunn/fzf'
+Plug 'chriskempson/base16-vim'
 
 let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
