@@ -43,8 +43,9 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
-Plug 'junegunn/fzf'
 Plug 'chriskempson/base16-vim'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
@@ -567,4 +568,7 @@ else
 endif
 
 " FZF settings
-noremap <leader>f :FZF 
+let g:fzf_layout = { 'down': '~40%' }
+noremap <leader>f :FZF
+noremap <leader>p :FZF -m ./<cr>
+
