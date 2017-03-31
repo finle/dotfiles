@@ -40,12 +40,14 @@ Plug 'vim-scripts/CSApprox'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
+""Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'w0rp/ale'
+Plug 'ervandew/supertab'
 
 let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
@@ -215,7 +217,8 @@ set title
 set titleold="Terminal"
 set titlestring=%F
 
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ 
+
 
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
@@ -229,6 +232,7 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
+let g:airline#extensions#ale#enable = 1
 
 "*****************************************************************************
 "" Abbreviations
@@ -378,6 +382,14 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
 
+" ale
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+
+
 " syntastic
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_error_symbol='✗'
@@ -509,8 +521,12 @@ let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>u"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
-let g:jedi#completions_command = "<C-Space>"
+let g:jedi#completions_command = "<c-n>"
+" let g:jedi#completions_command = "<Tab>"
 let g:jedi#smart_auto_mappings = 0
+
+" supertabs
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " syntastic
 let g:syntastic_python_checkers=['python', 'flake8']
@@ -571,4 +587,7 @@ endif
 let g:fzf_layout = { 'down': '~40%' }
 noremap <leader>f :FZF
 noremap <leader>p :FZF -m ./<cr>
+
+" setting paste
+set pastetoggle=<F5>
 
