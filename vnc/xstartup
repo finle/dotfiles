@@ -1,0 +1,14 @@
+#!/bin/sh
+unset SESSION_MANAGER
+gnome-session \u2013session=gnome-classic &
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+gnome-panel &
+gnome-settings-daemon &
+metacity &
+nautilus &
+gnome-terminal &
+xsetroot -solid grey
+vncconfig -iconic &
+x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+x-window-manager &
