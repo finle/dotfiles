@@ -521,12 +521,14 @@ let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>u"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
-"let g:jedi#completions_command = "<c-n>"
-let g:jedi#completions_command = "<Tab>"
+let g:jedi#completions_command = "<c-n>"
+"let g:jedi#completions_command = "<Tab>"
 let g:jedi#smart_auto_mappings = 0
 
 " supertabs
-let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionType = "context"
 
 " syntastic
 let g:syntastic_python_checkers=['python', 'flake8']
