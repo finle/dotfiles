@@ -26,6 +26,7 @@ call plug#begin(expand('~/.vim/plugged'))
 "" Plug install packages
 "*****************************************************************************
 Plug 'scrooloose/nerdcommenter'
+Plug 'tmhedberg/SimpylFold'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
@@ -48,6 +49,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'w0rp/ale'
 Plug 'ervandew/supertab'
+Plug 'ivanov/vim-ipython'
 
 let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
@@ -126,6 +128,7 @@ set softtabstop=0
 set shiftwidth=4
 set expandtab
 
+
 "" Map leader to ,
 let mapleader=','
 
@@ -151,6 +154,16 @@ let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
+
+"" relative line
+set relativenumber
+
+"" code folding
+set foldmethod=indent
+set foldlevel=99
+let g:SimpylFold_docstring_preview=1
+"nnoremap <space> za
+"za to fold and unfold
 
 "*****************************************************************************
 "" Visual Settings
@@ -377,10 +390,10 @@ let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 
 " snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+"let g:UltiSnipsEditSplit="vertical"
 
 " ale
 let g:ale_sign_error = '>>'
@@ -508,7 +521,7 @@ augroup END
 " vim-python
 augroup vimrc-python
   autocmd!
-  autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
+  autocmd FileType python setlocal fileformat=unix expandtab textwidth=79 shiftwidth=4 tabstop=8 colorcolumn=79
       \ formatoptions+=croq softtabstop=4 smartindent
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
@@ -529,6 +542,7 @@ let g:jedi#smart_auto_mappings = 0
 "let g:SuperTabDefaultCompletionType = "<c-n>"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " syntastic
 let g:syntastic_python_checkers=['python', 'flake8']
@@ -588,7 +602,7 @@ endif
 " FZF settings
 let g:fzf_layout = { 'down': '~40%' }
 noremap <leader>f :FZF
-noremap <leader>p :FZF -m ./<cr>
+"noremap <leader>p :FZF -m ./<cr>
 
 " setting paste
 set pastetoggle=<F5>
