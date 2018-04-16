@@ -440,9 +440,7 @@ endif
 
 "" Buffer nav
 noremap <leader>z :bp<CR>
-noremap <leader>q :bp<CR>
 noremap <leader>x :bn<CR>
-noremap <leader>w :bn<CR>
 nnoremap <leader>l :ls<CR>
 nnoremap <leader>1 :1b<CR>
 nnoremap <leader>2 :2b<CR>
@@ -455,6 +453,9 @@ nnoremap <leader>8 :8b<CR>
 nnoremap <leader>9 :9b<CR>
 nnoremap <leader>0 :10b<CR>
 nnoremap <leader>n :enew<CR>
+
+"" Close buffer without losing split
+map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
 
 "" Close buffer
 noremap <leader>c :bd<CR>
