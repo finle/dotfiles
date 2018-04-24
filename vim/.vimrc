@@ -518,6 +518,10 @@ augroup FileType go
   au FileType go nmap <leader>gt <Plug>(go-test)
 augroup END
 
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
 
 " python
 " vim-python
@@ -536,7 +540,7 @@ let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>u"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
-let g:jedi#completions_command = "<c-n>"
+let g:jedi#completions_command = "<C-Space>"
 "let g:jedi#completions_command = "<Tab>"
 let g:jedi#smart_auto_mappings = 0
 
@@ -607,5 +611,5 @@ noremap <leader>f :FZF
 "noremap <leader>p :FZF -m ./<cr>
 
 " setting paste
-set pastetoggle=<F5>
+set pastetoggle=<F6>
 
