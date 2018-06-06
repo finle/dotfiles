@@ -25,6 +25,7 @@ call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
+Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/SimpylFold'
 Plug 'scrooloose/nerdtree'
@@ -455,7 +456,7 @@ nnoremap <leader>0 :10b<CR>
 nnoremap <leader>n :enew<CR>
 
 "" Close buffer without losing split
-map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
+map <leader>q :bp\|bd #<CR>
 
 "" Close buffer
 noremap <leader>c :bd<CR>
@@ -522,6 +523,9 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set tabstop=2
     \ set softtabstop=2
     \ set shiftwidth=2
+
+" groovy
+au BufNewFile,BufRead *.groovy setf groovy setlocal expandtab shiftwidth=4 softtabstop=4
 
 " python
 " vim-python
