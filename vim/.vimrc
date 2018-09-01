@@ -51,6 +51,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'w0rp/ale'
 Plug 'ervandew/supertab'
 Plug 'ivanov/vim-ipython'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+Plug 'rhysd/vim-clang-format'
 
 let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
@@ -80,6 +84,17 @@ Plug 'tomasr/molokai'
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
+
+" autoformat
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+augroup END
 
 " c
 Plug 'vim-scripts/c.vim'
@@ -486,8 +501,8 @@ nnoremap <Leader>o :.Gbrowse<CR>
 "*****************************************************************************
 
 " c
-autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd FileType c setlocal tabstop=2 shiftwidth=2 softtabstop=2 colorcolumn=81 autoindent expandtab
+autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2 colorcolumn=81 autoindent expandtab
 
 
 " go
